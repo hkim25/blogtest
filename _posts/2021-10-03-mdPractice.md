@@ -3,8 +3,8 @@ layout: post
 title: mdPractice
 date: 2021-10-03
 author: Hongjoong Kim
-categories: Post
-tags: markdown_practice
+categories: markdown
+tags: [markdown, practice]
 ---
 
 # 마크다운 연습
