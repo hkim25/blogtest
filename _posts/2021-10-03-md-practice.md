@@ -59,17 +59,17 @@ _이탤릭(기울이기)_
     
 유형 1 : 단순 이미지 삽입  
 
-![이미지](https://hkim25.github.io/assets/swh.jpg)
+![이미지](https://hkim25.github.io/assets/images/post/2021-10-03-md-practice/swh.jpg)
   
     
 유형 2 : 크기 조절을 위해선 img 태그 사용 <br>  
 
-<img src = "https://hkim25.github.io/assets/swh.jpg" height="100" width="150">  
+<img src = "https://hkim25.github.io/assets/images/post/2021-10-03-md-practice/swh.jpg" height="100" width="150">  
   
 <br>
 유형 3 : 이미지에 링크 걸기  
   
-[![이미지](https://hkim25.github.io/assets/swh.jpg)](https://hkim25.github.io)  
+[![이미지](https://hkim25.github.io/assets/images/post/2021-10-03-md-practice/sni.jpg)](https://hkim25.github.io)  
   
     
       
