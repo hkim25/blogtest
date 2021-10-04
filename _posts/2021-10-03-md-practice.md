@@ -1,6 +1,6 @@
 ---
 layout: post
-title: mdPractice
+title: 마크다운 연습
 date: 2021-10-03
 author: Hongjoong Kim
 categories: markdown
