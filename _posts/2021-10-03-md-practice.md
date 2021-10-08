@@ -3,8 +3,8 @@ layout: post
 title: 마크다운 연습
 date: 2021-10-03
 author: Hongjoong Kim
-categories: markdown
-tags: [markdown, practice]
+categories: 개념정리
+tags: [markdown]
 ---
 
 # 마크다운 연습
