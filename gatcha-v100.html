@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            dbInit();
+            $('button#play').click(function(){
+                process(10);
+            })
+        })
+        //확률정보
+        const srRate = 0.025;
+        const rRate = 0.1;
+        //시행정보 전역변수
+        var pickN = 0;
+        var pickR = 0;
+        var pickSR = 0;
+        //Collection으로 DB 대체
+        var characters = new Map();
+        var normal = new Array();
+        var rare = new Array();
+        var superRare = new Array();
+        //캐릭터 정보 column Insert
+        function dbInit(){
+            characters.set('normal',normal);
+            characters.set('rare',rare);
+            characters.set('superrare',superRare);
+            normal.push('N-스레기');
+            normal.push('N-수레기');
+            normal.push('N-슈레기');
+            normal.push('N-시레기');
+            normal.push('N-개스레기');
+            normal.push('N-쑤레기');
+            rare.push('R-평타');
+            rare.push('R-평범');
+            rare.push('R-괜찮');
+            rare.push('R-오히려좋아');
+            superRare.push('SR-대바아아아악');
+            superRare.push('SR-운다씀');
+        }
+        //뽑기결과 등급 결정
+        function gatcha(){
+            let random = Math.random();
+            let result = '';
+            if(random > (1-srRate)){
+                pickSR++;
+                result = 'superrare';
+            }else if(random > (1-srRate-rRate)){
+                pickR++;
+                result = 'rare';
+            }else{
+                pickN++;
+                result = 'normal';
+            }
+            console.log(random);
+            console.log(result);
+            return result;
+        }
+        //등급 내 뽑은 캐릭터 결정
+        function selectCharacter(grade){
+            let range = characters.get(grade).length;
+            console.log(range);
+            let pick = rand(0,(range-1));
+            console.log(pick);
+            return characters.get(grade)[pick];
+        }
+        //범위 내 자연수 난수 생성
+        function rand(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        //가챠버튼 눌렀을 때 param만큼 뽑기 프로세스 진행
+        function process(param){
+            let htmlText = '';
+            let grade;
+            let picked;
+            for(let i=0; i<param; i++){
+                grade = gatcha();
+                picked = selectCharacter(grade);
+                htmlText += '<p>'+grade+'등급의 '+picked+' 캐릭터를 뽑았다!!</p>';
+            }
+            htmlText += '<p>뽑은횟수 : '+(pickN+pickR+pickSR)+' N등급 : '+pickN+'('+((pickN/(pickN+pickR+pickSR))*100).toFixed(2)+'%)'+
+                ' R등급 : '+pickR+'('+((pickR/(pickN+pickR+pickSR))*100).toFixed(2)+'%)'+' SR등급 : '+pickSR+'('+((pickSR/(pickN+pickR+pickSR))*100).toFixed(2)+'%)'+'</p>';
+            $('div#resultWindow').html(htmlText); //임시
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <button id='play'>가챠</button>
+    </div>
+    <div id='resultWindow'>
+
+    </div>
+</body>
+</html>
